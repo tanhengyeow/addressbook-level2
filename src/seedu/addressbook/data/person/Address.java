@@ -42,7 +42,7 @@ public class Address {
         this.value = blockNum.getBlockNum() + DELIMITER + "" +
                      streetNum.getStreetNum() + DELIMITER + "" +
                      unitNum.getUnitNum() + DELIMITER + "" +
-                     postalCode.getPostalCode() + DELIMITER;
+                     postalCode.getPostalCode();
     }
 
     /**
