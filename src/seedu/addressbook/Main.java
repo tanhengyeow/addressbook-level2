@@ -109,8 +109,13 @@ public class Main {
         try {
             command.setData(addressBook, lastShownList);
             CommandResult result = command.execute();
+
             storage.save(addressBook);
             return result;
+
+        } catch (StorageOperationException e) {
+            ui.showToUser(storage.path + " is set to read-only. Please change your permissions accordingly for normal operations to work.");
+            return new CommandResult("");
         } catch (Exception e) {
             ui.showToUser(e.getMessage());
             throw new RuntimeException(e);
