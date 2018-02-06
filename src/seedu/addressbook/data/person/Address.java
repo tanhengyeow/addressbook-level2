@@ -15,6 +15,13 @@ public class Address {
     public final String value;
     private boolean isPrivate;
 
+    public final Block blockNum;
+    public final Street streetNum;
+    public final Unit unitNum;
+    public final PostalCode postalCode;
+    private final static String DELIMITER = ",";
+
+
     /**
      * Validates given address.
      *
@@ -22,11 +29,20 @@ public class Address {
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
         String trimmedAddress = address.trim();
+        String[] addressProperty = trimmedAddress.split(DELIMITER);
+        this.blockNum = new Block(addressProperty[0]);
+        this.streetNum = new Street(addressProperty[1]);
+        this.unitNum = new Unit(addressProperty[2]);
+        this.postalCode = new PostalCode(addressProperty[3]);
+
         this.isPrivate = isPrivate;
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
-        this.value = trimmedAddress;
+        this.value = blockNum.getBlockNum() + DELIMITER + "" +
+                     streetNum.getStreetNum() + DELIMITER + "" +
+                     unitNum.getUnitNum() + DELIMITER + "" +
+                     postalCode.getPostalCode() + DELIMITER;
     }
 
     /**
