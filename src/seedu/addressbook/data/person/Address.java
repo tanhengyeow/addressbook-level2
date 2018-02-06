@@ -29,16 +29,18 @@ public class Address {
      */
     public Address(String address, boolean isPrivate) throws IllegalValueException {
         String trimmedAddress = address.trim();
+
+        this.isPrivate = isPrivate;
+        if (!isValidAddress(trimmedAddress)) {
+            throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
+        }
+
         String[] addressProperty = trimmedAddress.split(DELIMITER);
         this.blockNum = new Block(addressProperty[0]);
         this.streetNum = new Street(addressProperty[1]);
         this.unitNum = new Unit(addressProperty[2]);
         this.postalCode = new PostalCode(addressProperty[3]);
 
-        this.isPrivate = isPrivate;
-        if (!isValidAddress(trimmedAddress)) {
-            throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
-        }
         this.value = blockNum.getBlockNum() + DELIMITER + "" +
                      streetNum.getStreetNum() + DELIMITER + "" +
                      unitNum.getUnitNum() + DELIMITER + "" +
