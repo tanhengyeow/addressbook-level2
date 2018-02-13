@@ -66,6 +66,19 @@ Examples:
 * `find Betsy Tim John`<br>
   Returns Any person having names `Betsy`, `Tim`, or `John`
 
+### Searching all persons containing any letters in their name: `search`
+Search persons whose names contain any of the given letters.<br>
+Format: `search LETTER [MORE_LETTERS]`
+
+> The search is case sensitive, the order of the letters does not matter, only the name is searched, 
+and persons matching at least one letter will be returned.
+
+Examples: 
+* `search J`<br>
+  Returns `John Doe` and all persons with letter 'J' in their name
+* `find B T J`<br>
+  Returns `Betsy`, `Tim`, and `John` if they are in the addressbook.
+
 ### Deleting a person : `delete`
 Deletes the specified person from the address book. Irreversible.<br>
 Format: `delete INDEX`
