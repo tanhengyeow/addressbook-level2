@@ -15,10 +15,10 @@ public class Address {
     public final String value;
     private boolean isPrivate;
 
-    public final Block blockNum;
-    public final Street streetNum;
-    public final Unit unitNum;
-    public final PostalCode postalCode;
+    private final Block block;
+    private final Street street;
+    private final Unit unit;
+    private final PostalCode postalCode;
     private final static String DELIMITER = ",";
 
 
@@ -36,14 +36,14 @@ public class Address {
         }
 
         String[] addressProperty = trimmedAddress.split(DELIMITER);
-        this.blockNum = new Block(addressProperty[0]);
-        this.streetNum = new Street(addressProperty[1]);
-        this.unitNum = new Unit(addressProperty[2]);
+        this.block = new Block(addressProperty[0]);
+        this.street = new Street(addressProperty[1]);
+        this.unit = new Unit(addressProperty[2]);
         this.postalCode = new PostalCode(addressProperty[3]);
 
-        this.value = blockNum.getBlockNum() + DELIMITER + "" +
-                     streetNum.getStreetNum() + DELIMITER + "" +
-                     unitNum.getUnitNum() + DELIMITER + "" +
+        this.value = block.getBlock() + DELIMITER + "" +
+                     street.getStreet() + DELIMITER + "" +
+                     unit.getUnit() + DELIMITER + "" +
                      postalCode.getPostalCode();
     }
 
