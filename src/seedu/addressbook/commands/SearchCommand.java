@@ -37,7 +37,7 @@ public class SearchCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyLetters(letters);
+        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyLetters(letters.trim());
         return new CommandResult(getMessageForPersonListShownSummary(personsFound), personsFound);
     }
 

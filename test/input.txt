@@ -107,6 +107,15 @@
   find Charlie Betsy
 
 ##########################################################
+# test search persons command
+##########################################################
+
+  # search one letter
+  search B
+  # search multiple letters
+  search yC
+
+##########################################################
 # test delete person command
 ##########################################################
 
