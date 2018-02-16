@@ -53,7 +53,7 @@ public class SearchCommand extends Command {
         // Returns a list of people whose names contains letters specified by user
         for (ReadOnlyPerson person : addressBook.getAllPersons()) {
 
-            for (int i=0; i<letters.length(); i++) {
+            for (int i = 0; i<letters.length(); i++) {
                 Character currLetter = letters.charAt(i);
 
                 // Checks if letter is present in person's name
