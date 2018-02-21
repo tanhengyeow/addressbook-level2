@@ -45,25 +45,36 @@ public class UtilsTest {
     }
 
     @Test
-    public void isAnyNull() throws Exception {
+    public void isAnyNull_emptyList_returnsFalse() throws Exception {
         // empty list
         assertNotNull();
+    }
 
+    @Test
+    public void isAnyNull_oneObject_returnsFalse() throws Exception {
         // only one object
-        assertContainsNull((Object) null);
         assertNotNull(10);
         assertNotNull("");
         assertNotNull("xyz");
+    }
 
+    @Test
+    public void isAnyNull_allNull_returnsTrue() throws Exception {
         // all objects null
         assertContainsNull(null,null,null);
         assertContainsNull(null,null);
+    }
 
+    @Test
+    public void isAnyNull_noNull_returnsTrue() throws Exception {
         // all objects not null
         assertNotNull("a", "d", "f");
         assertNotNull(0, 5, 10);
         assertNotNull(2002, "bcd");
+    }
 
+    @Test
+    public void isAnyNull_someNull_returnsTrue() throws Exception {
         // some object(s) are null
         assertContainsNull("abc", "abc", null);
         assertContainsNull("abc", null, "abc", "ABC");
@@ -72,7 +83,6 @@ public class UtilsTest {
         assertContainsNull(null, 1, new Integer(1));
         assertContainsNull(null, null);
         assertContainsNull(null, "a", "b", null);
-
     }
 
     private void assertContainsNull(Object... objects) {
